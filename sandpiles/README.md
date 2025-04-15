@@ -56,7 +56,7 @@ Run the executable:
 
 ## Example
 
-### Input (`0-main.c`):
+### Input (`0-main.c`)
 
 ```c
 int grid1[3][3] = {
@@ -75,8 +75,7 @@ printf("=\n");
 print_grid(grid1);
 ```
 
-
-### Output:
+### Output
 
 ```sh
 First Grid Sum:
