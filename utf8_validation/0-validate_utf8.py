@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
 Module for validating if a given data set represents a valid UTF-8 encoding.
 """
