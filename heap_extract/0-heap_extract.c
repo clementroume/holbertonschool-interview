@@ -29,6 +29,7 @@ heap_t *find_last_node(heap_t *root, size_t index, size_t size)
 		return (root);
 
 	heap_t *left = find_last_node(root->left, 2 * index + 1, size);
+
 	if (left)
 		return (left);
 
