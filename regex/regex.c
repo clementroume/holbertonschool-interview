@@ -13,7 +13,7 @@ int regex_match(const char *str, const char *pattern)
 {
 	if (*pattern == '\0')
 	{
-		return *str == '\0';
+		return (*str == '\0');
 	}
 
 	int first_match = (*str != '\0' && (*pattern == *str || *pattern == '.'));
@@ -25,6 +25,6 @@ int regex_match(const char *str, const char *pattern)
 	}
 	else
 	{
-		return first_match && regex_match(str + 1, pattern + 1);
+		return (first_match && regex_match(str + 1, pattern + 1));
 	}
 }
