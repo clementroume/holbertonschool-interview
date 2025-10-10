@@ -47,7 +47,5 @@ if __name__ == "__main__":
         print_stats(total_size, status_codes)
         raise
 
-    finally:
-        # Print final stats if the loop exits without a keyboard interrupt
-        if line_count % 10 != 0:
-            print_stats(total_size, status_codes)
+    # Print final stats on normal exit
+    print_stats(total_size, status_codes)
