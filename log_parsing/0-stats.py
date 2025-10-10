@@ -29,13 +29,11 @@ if __name__ == "__main__":
             try:
                 # Validate the line format and extract data
                 if len(parts) > 2:
-                    size = int(parts[-1])
                     status = int(parts[-2])
+                    size = int(parts[-1])
                     if status in status_codes:
                         status_codes[status] += 1
-                    total_size += size
-                else:
-                    continue
+                        total_size += size
             except (ValueError, IndexError):
                 # Skip lines that do not have the expected integer format
                 continue
