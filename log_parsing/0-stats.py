@@ -27,23 +27,22 @@ if __name__ == "__main__":
             line_count += 1
             parts = line.split()
             try:
-                # Validate the line format and extract data
-                if len(parts) > 2:
-                    status = int(parts[-2])
-                    size = int(parts[-1])
-                    if status in status_codes:
-                        status_codes[status] += 1
-                        total_size += size
+                # This logic correctly skips a line if either part is invalid
+                # or if the status code is not in the list.
+                status = int(parts[-2])
+                size = int(parts[-1])
+                if status in status_codes:
+                    status_codes[status] += 1
+                    total_size += size
             except (ValueError, IndexError):
-                # Skip lines that do not have the expected integer format
+                # Malformed lines are skipped completely.
                 continue
 
             if line_count % 10 == 0:
                 print_stats(total_size, status_codes)
 
     except KeyboardInterrupt:
-        print_stats(total_size, status_codes)
-        raise
+        pass
 
-    # Print final stats on normal exit
-    print_stats(total_size, status_codes)
+    finally:
+        print_stats(total_size, status_codes)
