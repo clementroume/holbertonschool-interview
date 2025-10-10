@@ -1,4 +1,4 @@
-# ReegEx
+# RegEx
 
 ## Description
 
