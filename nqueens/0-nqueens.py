@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """N-Queens Module"""
+import sys
 
 
 def nQueens(n):
@@ -10,25 +11,19 @@ def nQueens(n):
                     of queens.
 
     Returns:
-                    list: A list of lists, where each inner list represents
-                    a valid arrangement of queens on the chessboard.
+                    list: A list of solutions; each solution is a list of
+                    [row, col] pairs indicating queen positions.
     """
     def is_not_under_attack(row, col):
         for prev_row in range(row):
-            if (board[prev_row] == col or
-                    board[prev_row] - prev_row == col - row or
-                    board[prev_row] + prev_row == col + row):
+            prev_col = board[prev_row]
+            if prev_col == col or abs(prev_col - col) == abs(prev_row - row):
                 return False
         return True
 
     def place_queen(row):
         if row == n:
-            solution = []
-            for r in range(n):
-                line = ['.'] * n
-                line[board[r]] = 'Q'
-                solution.append(''.join(line))
-            solutions.append(solution)
+            solutions.append([[r, board[r]] for r in range(n)])
             return
         for col in range(n):
             if is_not_under_attack(row, col):
@@ -40,3 +35,21 @@ def nQueens(n):
     board = [-1] * n
     place_queen(0)
     return solutions
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        sys.exit(1)
+    try:
+        n = int(sys.argv[1])
+    except Exception:
+        print("N must be a number")
+        sys.exit(1)
+    if n < 4:
+        print("N must be at least 4")
+        sys.exit(1)
+
+    solutions = nQueens(n)
+    for sol in solutions:
+        print(sol)
